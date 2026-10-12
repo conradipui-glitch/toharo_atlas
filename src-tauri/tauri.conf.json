@@ -27,6 +27,7 @@
   "bundle": {
     "active": true,
     "targets": ["nsis"],
+    "icon": [],
     "shortDescription": "Local-first visual knowledge library"
   }
 }

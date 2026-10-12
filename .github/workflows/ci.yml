@@ -15,7 +15,7 @@ jobs:
           node-version: '22'
           cache: npm
           cache-dependency-path: package-lock.json
-      - run: npm ci
+      - run: npm install --no-audit --no-fund
       - run: npm run build
       - run: npm test
 
@@ -29,5 +29,5 @@ jobs:
           cache: npm
           cache-dependency-path: package-lock.json
       - uses: dtolnay/rust-toolchain@stable
-      - run: npm ci
+      - run: npm install --no-audit --no-fund
       - run: npm run tauri build

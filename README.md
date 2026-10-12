@@ -43,4 +43,3 @@ SQLite is stored in Tauri's application data directory. Browser preview uses loc
 2. Proper content extraction (with platform rules), metadata previews and source-backed citations.
 3. Collection import/export, backups and semantic search.
 
-MIT License (pending LICENSE file).

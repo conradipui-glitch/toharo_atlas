@@ -54,7 +54,7 @@ export async function saveBookmark(item: Bookmark): Promise<void> {
 
 export async function deleteBookmark(id: string): Promise<void> {
   if (!desktop) { localStorage.setItem(LOCAL_KEY, JSON.stringify(browserRead().filter(b => b.id !== id))); return; }
-  (await database()).execute('DELETE FROM bookmarks WHERE id = $1', [id]);
+  await (await database()).execute('DELETE FROM bookmarks WHERE id = $1', [id]);
 }
 
 export async function deleteDemoBookmarks(): Promise<void> {
