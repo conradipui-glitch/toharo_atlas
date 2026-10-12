@@ -12,6 +12,9 @@
   },
   "dependencies": {
     "@tauri-apps/api": "^2.0.0",
+    "@tauri-apps/plugin-opener": "^2.0.0",
+    "@fontsource/dm-sans": "^5.2.0",
+    "@fontsource/manrope": "^5.2.0",
     "@tauri-apps/plugin-sql": "^2.0.0",
     "lucide-react": "^0.468.0",
     "react": "^19.0.0",
