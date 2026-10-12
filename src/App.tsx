@@ -9,6 +9,7 @@ import {
   Sparkles, Square, Trash2, Users, Video, WandSparkles, X, Zap
 } from 'lucide-react';
 import { getCurrentWindow } from '@tauri-apps/api/window';
+import { openUrl } from '@tauri-apps/plugin-opener';
 import {
   CATEGORIES, type Bookmark, type ModelInfo, type ModelTest, type View, type Tone
 } from './types';
@@ -116,6 +117,7 @@ export default function App() {
   const searchRef=useRef<HTMLInputElement>(null);
 
   const showToast = (message:string) => { setToast(message); };
+  useEffect(()=>{if(!toast)return;const t=window.setTimeout(()=>setToast(''),5000);return()=>window.clearTimeout(t);},[toast]);
   const reload = useCallback(async()=>{setItems(await loadBookmarks());},[]);
   const refreshModels = useCallback(async()=>{
     setModelBusy(true);setModelError('');
@@ -341,7 +343,7 @@ export default function App() {
       <Cover bookmark={selected}/>
       <div className="detail-content">
         <div className="detail-headline"><div className="detail-date">{niceDate(selected.created_at)} · {selected.category}</div><h2>{selected.title}</h2><p>{selected.author||domain(selected.url)}</p></div>
-        <a className="open-original" href={selected.url} target="_blank" rel="noopener noreferrer"><ExternalLink size={17}/> Открыть оригинал <ArrowUpRight size={16}/></a>
+        <a className="open-original" href={selected.url} target="_blank" rel="noopener noreferrer" onClick={e=>{if(desktop){e.preventDefault();void openUrl(selected.url).catch(err=>showToast(String(err)));}}}><ExternalLink size={17}/> Открыть оригинал <ArrowUpRight size={16}/></a>
         <div className="detail-subheading"><span>AI SUMMARY</span><Sparkles size={17}/></div>
         {selected.ai_summary?<div className="summary-box"><p>{selected.ai_summary}</p><div className="ai-attribution"><Sparkles size={14}/> Создано моделью ИИ по доступным данным</div></div>:<div className="summary-placeholder"><WandSparkles size={24}/><p>Выполни анализ названия, ссылки и заметок. Содержимое ролика пока не извлекается.</p></div>}
         <button className="ai-action" disabled={analyzing} onClick={()=>void runAnalysis(selected)}>{analyzing?<LoaderCircle size={17} className="spin"/>:<Sparkles size={17}/>} {selected.ai_summary?'Повторить AI-анализ':'Проанализировать с ИИ'} <ArrowRight size={17}/></button>
