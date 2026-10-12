@@ -1,0 +1,44 @@
+name: OpenRouter smoke (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "OpenRouter model ID"
+        required: false
+        default: "anthropic/claude-haiku-5.5"
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test configured OpenRouter key and model
+        shell: bash
+        env:
+          OONR_API: ${{ secrets.OONR_API }}
+          MODEL: ${{ github.event.inputs.model }}
+        run: |
+          if [ -z "$OONR_API" ]; then
+            echo "::error::Repository secret OONR_API is missing"
+            exit 1
+          fi
+          # Avoid printing credentials, request payloads and model reply.
+          node -e '
+            const key = process.env.OONR_API;
+            const model = process.env.MODEL;
+            (async () => {
+              const catalog = await fetch("https://openrouter.ai/api/v1/models", {
+                headers: { Authorization: "Bearer " + key }
+              });
+              if (!catalog.ok) throw Error("Catalog HTTP " + catalog.status);
+              const { data } = await catalog.json();
+              if (!data.some(item => item.id === model)) throw Error("Model not found in OpenRouter catalog");
+              const reply = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+                method: "POST",
+                headers: { Authorization: "Bearer " + key, "Content-Type": "application/json" },
+                body: JSON.stringify({ model, max_tokens: 12, messages: [{ role: "user", content: "Reply OK" }] })
+              });
+              if (!reply.ok) throw Error("Completion HTTP " + reply.status);
+              console.log("OpenRouter catalog and completion OK for " + model);
+            })().catch(error => { console.error(error.message); process.exitCode = 1; });
+          '

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "TOHARO Atlas",
+  "version": "0.1.0",
+  "identifier": "lab.toharo.atlas",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "TOHARO Atlas",
+        "width": 1480,
+        "height": 920,
+        "minWidth": 1040,
+        "minHeight": 660,
+        "decorations": false,
+        "backgroundColor": "#101116"
+      }
+    ],
+    "security": { "csp": null }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "shortDescription": "Local-first visual knowledge library"
+  }
+}
