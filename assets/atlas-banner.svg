@@ -1,0 +1,13 @@
+<svg width="1280" height="420" viewBox="0 0 1280 420" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#171720"/><stop offset=".56" stop-color="#242038"/><stop offset="1" stop-color="#13151e"/></linearGradient><linearGradient id="glow" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#c2aafd"/><stop offset="1" stop-color="#e7b5c7"/></linearGradient><radialGradient id="halo"><stop stop-color="#997be4" stop-opacity=".32"/><stop offset="1" stop-color="#997be4" stop-opacity="0"/></radialGradient><pattern id="grid" width="38" height="38" patternUnits="userSpaceOnUse"><path d="M38 0H0V38" fill="none" stroke="#ffffff" stroke-opacity=".055"/></pattern></defs>
+<rect width="1280" height="420" rx="22" fill="url(#bg)"/><rect width="1280" height="420" rx="22" fill="url(#grid)"/>
+<circle cx="1040" cy="200" r="260" fill="url(#halo)"/><g fill="none" stroke="#ccbdff" stroke-opacity=".21" stroke-width="1"><circle cx="1020" cy="207" r="85"/><circle cx="1020" cy="207" r="138"/><circle cx="1020" cy="207" r="190"/><path d="M830 207h380M1020 17v380"/></g>
+<g transform="translate(1005 102)" fill="none" stroke="#d1c0ff" stroke-linecap="round"><path d="M17 28h86M67 28v178" stroke-width="21"/><circle cx="149" cy="190" r="11" fill="#d1c0ff" stroke="none"/></g>
+<rect x="56" y="54" width="150" height="31" rx="15" fill="#b8a6fb" fill-opacity=".13" stroke="#b8a6fb" stroke-opacity=".36"/><text x="74" y="74" fill="#c8b6ff" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2">LOCAL FIRST · AI</text>
+<text x="56" y="164" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="69" font-weight="800" letter-spacing="-3">TOHARO <tspan fill="url(#glow)">ATLAS</tspan></text>
+<text x="58" y="213" fill="#d6d0e2" font-family="Segoe UI, Arial, sans-serif" font-size="23" font-weight="500">Collect your curiosity.</text>
+<text x="58" y="262" fill="#a19bab" font-family="Segoe UI, Arial, sans-serif" font-size="17">A beautiful, private home for everything worth saving.</text>
+<rect x="57" y="320" width="150" height="37" rx="10" fill="#b7a2f5"/><text x="77" y="344" fill="#211833" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">Desktop · Windows</text>
+<rect x="219" y="320" width="108" height="37" rx="10" stroke="#807291" fill="#ffffff" fill-opacity=".04"/><text x="239" y="344" fill="#d0c8e0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">Open source</text>
+<path d="M55 390H1224" stroke="#ccc0f5" stroke-opacity=".14"/>
+</svg>
